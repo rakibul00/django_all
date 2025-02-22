@@ -1,0 +1,30 @@
+{% include "navbar.html" %}
+
+{% block body %}
+<table class=" table table-bordered container mt-4">
+    <thead>
+      <tr>
+        <th scope="col">Serial</th>
+        <th scope="col">Student Roll</th>
+        <th scope="col">Nmae</th>
+        <th scope="col">Deperment</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in book %}
+        <tr>
+            <th scope="row">{{item.serial_number}}</th>
+            <td>{{item.student_roll}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.deparment}}</td>
+            <td>{{item.sub_name}}</td>
+            <td>{{item.first_pub}}</td>
+          </tr>
+        {% endfor %}
+      
+      
+    </tbody>
+  </table>
+{% endblock body %}

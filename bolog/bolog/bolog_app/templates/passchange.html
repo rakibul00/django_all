@@ -1,0 +1,55 @@
+
+
+
+ {% load crispy_forms_tags%}
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+
+
+
+    .badge {
+
+
+        border-radius: 5px;
+    }
+</style>
+
+
+
+
+{% include "navbar.html" %}
+<div class="container mt-5">
+
+
+    <!-- Conceptual Session Card -->
+    <div class=" shadow-lg">
+        {% if messages%}
+        {% for mm in messages%}
+        <p class="bg-success p-3 text-white">
+            {{mm}}
+        </p>
+        {% endfor%}
+        {% endif%}
+
+      
+ <form method="post" style="width: 70%; margin:auto; padding:3%" novalidate>
+    <!-- {{form|crispy}} -->
+     {% csrf_token%}
+     <h1>Password Change </h1>
+    {% for fm in form%}
+    {{fm.label_tag}}
+    {{fm}}
+    {{fm.errors}}
+    {% endfor %} <br>
+    <div class="d-grid gap-2 col-6 mx-auto">
+       <button style="align-items: center;" type="submit" class="btn btn-warning ">Updated Password</button>
+   
+    </div>
+</form>
+    </div>
+</div>

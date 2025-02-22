@@ -1,0 +1,15 @@
+
+
+{% include "navbar.html" %}
+
+<div class="container">
+  {% load crispy_forms_tags %}
+  <!-- profile_update.html -->
+<h1>Update Profile</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Update</button>
+
+</form>
+</div>

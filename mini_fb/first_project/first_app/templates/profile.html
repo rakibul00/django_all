@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% load static%}
+{% block body %}
+
+<div class="container mt-3 p-3 mb-4" style="box-shadow: 4px 4px 4px 4px gray; border-radius: 10px;" >
+  <div class="name d-flex" >
+    {% static "images/l.1.png" as rakib %}
+    {% static "images/tv.png" as rakib0 %}
+    {% static "images/t1.png" as rakib1 %}
+    {% static "images/vi1.png" as rakib2 %}
+
+    <a href="">
+      <img style="height: 30px; width:40px" class="mx-2 mt-3" src="{{rakib}}" alt="">
+    </a>
+
+    <h4 class=" p-3">{{user}}</h4>
+    <textarea class="form-control" rows="1" placeholder="What's on your mind, {{user}}?"></textarea>
+  </div>
+  <hr>
+  <div class="container d-flex justify-content-between">
+    <div class="div  ">
+      <img style="height: 30px; width:50px" class="mx-2 " src="{{rakib1}}" alt="">
+      <h4><a href="{% url 'text'%}">Text</a></h4>
+
+    </div>
+    <div class="div  ">
+      <img style="height: 30px; width:40px" class="mx-2 " src="{{rakib0}}" alt="">
+      <h4><a href="{% url 'uplodeimg'%}">Photo</a></h4>
+
+    </div>
+    <div class="div  ">
+      <img style="height: 30px; width:40px" class="mx-2 " src="{{rakib2}}" alt="">
+      <h4><a href="{% url 'text_photo'%}">Text/Photo</a></h4>
+
+    </div>
+  </div>
+</div>
+<div class="container">
+
+
+
+    <nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+      <a class="navbar-brand" href="#"></a>
+      <ul class="nav nav-pills " >
+        <li class="nav-item">
+          <a class="nav-link" href="#scrollspyHeading1">post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#scrollspyHeading2">pik</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#scrollspyHeading3">Text/Photo</a>
+        </li>
+        
+      </ul>
+    </nav>
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+      <h4 id="scrollspyHeading1"></h4>
+
+      {% for p in textt  %}
+      <div class="card mb-3 container" style="width: 18rem;">
+        <div class="row g-3">
+          
+            <div class="card-body">
+              <div class="row">
+                <div class="col-auto me-auto"><h4>{{user}}</h4></div>
+                <div class="col-auto">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            ...
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a href="{%url 'edit_text' num=p.num %}" class=" text-decoration-none mx-2" type="submit">
+                                    edit
+                                </a>
+                                
+                            </li>
+                            <li>
+                              <a href="{%url 'delet_text' num=p.num %}" class=" text-decoration-none mx-2" type="submit">
+                                  delet
+                              </a>
+                              
+                          <li> 
+                        </ul>
+                    </li>
+                </ul>
+                </div>
+              </div>
+             </div>
+             
+             <div class="card border-secondary mb-3" style="max-width: 18rem;">
+              
+              <div class="card-body">
+                <h5 class="card-title">{{p.title}}</h5>
+                <p class="card-text">{{p.text}}.</p>
+              </div>
+            </div>
+             
+               
+              <p class="card-text"><small class="text-muted">last updated {{p.last_at}} </small></p>
+           
+              <div>
+                <a href="">comment</a>
+              </div>
+            </div>
+        
+        </div>
+      </div>
+
+    {% endfor %}
+      
+    </div>
+      <h4 id="scrollspyHeading2"></h4>
+
+      {% for x in img  %}
+      <div class="card mb-3 container" style="width: 18rem;">
+        <div class="row g-3">
+          
+            <div class="card-body">
+              <div class="row">
+                <div class="col-auto me-auto"><h4>{{user}}</h4></div>
+                <div class="col-auto">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            ...
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a href="{%url 'edit_image' count=x.count %}" class=" text-decoration-none mx-2" type="submit">
+                                    edit
+                                </a>
+                            <li> 
+                            
+                              <li>
+                            
+                                <a href="{% url 'delet_image' count=x.count %}" class=" text-decoration-none mx-2" >Delete</a>
+                     
+                            <li> 
+                        </ul>
+                    </li>
+                </ul>
+                </div>
+              </div>
+             </div>
+              <img src="{{x.photo.url}}" class="img-fluid rounded-start" alt="...">
+              <p class="card-text">
+              
+              </p>
+              <p class="card-text"><small class="text-muted">Last updated {{x.date}} mins ago</small></p>
+              <div>
+                <a href="">comment</a>
+              </div>
+            </div>
+        
+        </div>
+      </div>
+
+    {% endfor %}
+
+
+    <h4 id="scrollspyHeading3"></h4>
+
+    {% for t in tp %}
+    <div class="card mb-3 container" style="width: 18rem;">
+      <div class="row g-3">
+        
+          <div class="card-body">
+            <div class="row">
+              <div class="col-auto me-auto"><h4>{{user}}</h4></div>
+              <div class="col-auto">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#"></a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          ...
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li>
+                              <a href="{%url 'edit_taximg' id=t.id %}" class=" text-decoration-none mx-2" type="submit">
+                                 edit
+                              </a>
+                          <li> 
+                            
+                            <li>
+                              <a href="{%url 'delet_taximg' id=t.id %}" class=" text-decoration-none mx-2" type="submit">
+                                  delet
+                              </a>
+                          <li> 
+                      </ul>
+                  </li>
+              </ul>
+              </div>
+            </div>
+           </div>
+           <p class="card-text">
+
+            {{t.text}}
+            </p>
+            <img src="{{t.photo.url}}" class="img-fluid rounded-start" alt="...">
+           
+            <p class="card-text"><small class="text-muted">Last updated {{t.date}} mins ago</small></p>
+            <div>
+              <a href="">comment</a>
+            </div>
+          </div>
+      
+      </div>
+    </div>
+
+  {% endfor %}
+      
+      
+ 
+      
+    </div>
+
+    
+
+
+
+</div>
+</div>
+
+
+
+{% endblock body %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+   {% if error %}
+  <div>
+    <div class="alert alert-danger" role="alert">
+       {{error}}
+      </div> 
+      {% endif %}
+     <h5>Movie Name :  {{movie}}</h5>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  </div>
+
+  <p style="text-align: center;">
+    ©Rakib 2024, all right reserve By:
+    <a href="https://www.facebook.com/00mRicE69" target="_blank">Md.Rakibul Islam</a>
+
+  </p>
+</footer>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card mb-3 w-100" style="margin-top: 20px;">
+    <div class="row g-0 w-100 h-100">
+      <div class="col-md-4">
+        <img src="{{movie.image.url}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Movie Nmae: {{movie.title}}</h5>
+          <p class="card-text"> {{movie.description}}</p>
+          <a href="{% url 'create_review' movie.id%}" class="btn btn-success ">Add Review </a> 
+         
+        </div>
+        <div class="container card mb-2 ml-3">
+          {% for review in reviews %}
+         <h5>Review By: {{review.user}}</h5>
+         <p>Submit-Date: {{review.date}}</p> 
+         <p>Review: {{review.text}}</p>
+         
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <p style="text-align: center;">
+    ©Rakib 2024, all right reserve By:
+    <a href="https://www.facebook.com/00mRicE69" target="_blank">Md.Rakibul Islam</a>
+
+  </p>
+</footer>
+{% endblock content %}

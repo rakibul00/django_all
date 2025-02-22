@@ -1,0 +1,57 @@
+{% include "navbar.html" %}
+<!-- {% load crispy_forms_tags%}
+
+
+<div style=" margin:auto; padding:3%; text-align: center; ">
+    <h1>welcome to profile</h1>
+<h3> your user id: {{user}}</h3>
+<p class="btn btn-info">
+    <a href=""> change your password</a>
+</p>
+<p class="btn btn-info">
+    <a href=""> change your Profile</a>
+</p>
+
+
+
+</div> -->
+{% load static %}
+{% static "images/pp.jpeg" as pp %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4">
+                <div class="text-center">
+                    <!-- <img src="{{pp}}" alt="Profile Picture" class="rounded-circle profile-img"> -->
+                    {% for p in profile %}
+                    <img src="{{p.img.url}}" class=" w-25 h-25 rounded-circle profile-img" alt="...">
+
+                    {% endfor %}
+                   
+                   
+                    <h2 class="mt-3">{{ user.username }}</h2>
+                    <p class="text-muted">{{ user.email }}</p>
+                </div>
+                <hr>
+                <div class="profile-info">
+                    <h4>About Me</h4>
+                    {% for p in profile %}
+                    <p>{{p.about}}</p>
+                    {% endfor %}
+                   
+                </div>
+                <hr>
+                <div class="text-center">
+                    <a href="{% url 'edit_profile'%}" class="btn btn-primary mb-3">Edit Profile</a><br>
+                    <p class="btn btn-info">
+                        <a href=""> change your password</a>
+                    </p><br>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

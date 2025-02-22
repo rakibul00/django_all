@@ -1,0 +1,14 @@
+
+
+#loginpage{
+   background: url("{% static 'libaray_app/static/l-1.avif' %}") no-repeat center center fixed;
+   background-size: cover;
+}
+
+.ful-home{
+   background-color: blueviolet;
+}
+.pp{
+   color: aqua;
+   
+}

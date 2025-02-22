@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% load crispy_forms_tags%}
+<div class="container">
+    <div class="py-5 text-center ">
+        <h1 class="mb-3">Uplode image</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token%}
+            {{form|crispy}}
+            <input type="submit" class="btn btn-success" value="Uplode">
+        </form>
+    </div>
+    
+   
+  </div>
+  
+{% endblock body %}

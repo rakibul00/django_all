@@ -1,0 +1,41 @@
+{% load crispy_forms_tags %}
+
+
+
+
+{% load crispy_forms_tags%}
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+
+
+
+    .badge {
+
+
+        border-radius: 5px;
+    }
+</style>
+
+
+
+
+{% include "navbar.html" %}
+<div class="container mt-5  shadow-lg padding:6%">
+
+
+    <!-- Conceptual Session Card -->
+   
+
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-info mb-3">Upload Image</button>
+      </form>
+  
+</div>
+    <!-- Optional Course Card -->
